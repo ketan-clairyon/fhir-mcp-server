@@ -1,5 +1,6 @@
 from mcp.server.fastmcp import FastMCP
 import requests
+from mcp.server.fastmcp.prompts import base
 
 # Initialize FastMCP server
 mcp = FastMCP("debu")
@@ -57,6 +58,24 @@ def delete_patient(patient_id: str) -> str:
         return f"Patient with ID {patient_id} successfully deleted."
     else:
         return f"Error: Deletion failed for ID {patient_id}. Status code: {response.status_code}"
-        
+
+
+@mcp.prompt()
+def get_patient(patient_id: str) -> str:
+    """Prompt to inquire about a patient's details."""
+    return f"Please provide information about the patient with ID {patient_id}. Make sure to not reveal the name, but all other details."
+
+@mcp.prompt()
+def review_code(code: str) -> str:
+    return f"Please review this code:\n\n{code}"
+
+@mcp.prompt()
+def debug_error(error: str) -> list[base.Message]:
+    return [
+        base.UserMessage("I'm seeing this error:"),
+        base.UserMessage(error),
+        base.AssistantMessage("I'll help debug that. What have you tried so far?"),
+    ]
+
 if __name__ == "__main__":
     mcp.run(transport='stdio')
