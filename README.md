@@ -1,7 +1,4 @@
 ﻿# fhir-mcp-server
-Here’s a clean and practical **GitHub README tutorial** for your FastMCP-based FHIR Patient tools:
-
----
 
 # 🏥 FHIR MCP Server (Patient Tools)
 
@@ -142,6 +139,3 @@ You can manually test endpoints using curl or Postman against the [HAPI FHIR ser
 
 MIT – feel free to use and adapt.
 
----
-
-Let me know if you want a **diagram**, a **PyPI packaging guide**, or **agent-side usage examples**.
