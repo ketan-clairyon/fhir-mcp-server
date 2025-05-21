@@ -1,4 +1,3 @@
-````markdown
 # FHIR MCP Server
 
 This repository contains a Model Context Protocol (MCP) server implementation for interacting with FHIR Patient resources using the FastMCP framework.
