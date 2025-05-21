@@ -3,7 +3,7 @@ import requests
 from mcp.server.fastmcp.prompts import base
 
 # Initialize FastMCP server
-mcp = FastMCP("debu")
+mcp = FastMCP("fhir")
 
 FHIR_BASE_URL = "http://hapi.fhir.org/baseR4"
 
