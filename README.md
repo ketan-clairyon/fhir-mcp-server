@@ -1,27 +1,26 @@
 # FHIR MCP Server
 
-This repository contains a Model Context Protocol (MCP) server implementation for interacting with FHIR Patient resources using the FastMCP framework.
+This repository provides a Model Context Protocol (MCP) server implementation for interacting with FHIR Patient and Observation resources. Built using the FastMCP framework, it facilitates seamless integration with AI models like Claude via MCP.
 
 ## Features
 
-- Retrieve, search, create, update, and delete FHIR Patient resources via the public FHIR API.
-- Integrated MCP tools for streamlined interactions.
-- Prompt functions for patient inquiries, code reviews, and debugging assistance.
-- Uses the `requests` library for HTTP requests.
-- Designed to work with Claude Desktop via MCP.
+* **FHIR Resource Management**: Retrieve, search, create, update, and delete FHIR Patient and Observation resources.
+* **MCP Integration**: Exposes tools and prompts for AI models to interact with FHIR data.
+* **FastMCP Framework**: Utilizes decorators for concise and readable code.
+* **Transport Options**: Supports both STDIO and HTTP(S) transports for flexibility.
 
 ## Setup
 
-### Clone the repository
+### Clone the Repository
 
 ```bash
 git clone git@github.com:ketan-clairyon/fhir-mcp-server.git
 cd fhir-mcp-server
-````
+```
 
-### Install dependencies
+### Install Dependencies
 
-Using UV package manager:
+Using the UV package manager:
 
 ```bash
 uv add "mcp[cli]"
@@ -44,7 +43,7 @@ To integrate this server with Claude Desktop:
 uv run mcp install server.py
 ```
 
-This will add the MCP server to your Claude Desktop configuration for easy access.
+This command adds the MCP server to your Claude Desktop configuration for easy access.
 
 ## Server Details
 
@@ -55,12 +54,11 @@ The server exposes the following MCP tools:
 * `create_patient(patient_data: dict) -> str`: Create a new patient record.
 * `update_patient(patient_id: str, patient_data: dict) -> str`: Update an existing patient.
 * `delete_patient(patient_id: str) -> str`: Delete a patient by ID.
-
-It also defines prompts for:
-
-* Patient information requests.
-* Code review.
-* Debugging assistance.
+* `get_observation(observation_id: str) -> str`: Retrieve an observation by ID.
+* `search_observations(params: dict) -> str`: Search observations with query parameters.
+* `create_observation(observation_data: dict) -> str`: Create a new observation record.
+* `update_observation(observation_id: str, observation_data: dict) -> str`: Update an existing observation.
+* `delete_observation(observation_id: str) -> str`: Delete an observation by ID.
 
 ## Requirements
 
@@ -71,4 +69,6 @@ It also defines prompts for:
 ## Notes
 
 * Ensure your virtual environment is activated when running commands.
-* The server communicates via stdio transport.
+* The server communicates via STDIO or HTTP(S) transport, as configured.
+* For production deployments, consider securing the server with HTTPS and implementing authentication mechanisms.
+
